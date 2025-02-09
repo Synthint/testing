@@ -2,7 +2,6 @@ postgresql:
   auth:
     username: coder
     database: coder
-    existingSecret: postgres-creds
 
 coder:
   coder:
