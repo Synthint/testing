@@ -1,0 +1,24 @@
+postgresql:
+  auth:
+    username: coder
+    database: coder
+    existingSecret: postgres-creds
+
+coder:
+  coder:
+    envFrom:
+      - secretRef:
+          name: coder-oidc
+    env:
+      - name: CODER_PG_CONNECTION_URL
+        value: postgres://coder:password@coder-postgresql.coder.svc.cluster.local:5432/coder?sslmode=disable
+      - name: CODER_ACCESS_URL
+        value: "http://homelab"
+      - name: CODER_OIDC_SIGN_IN_TEXT
+        value: "Sign in with Keycloak"
+      - name: CODER_OIDC_CLIENT_ID
+        value: coder
+      - name: CODER_OIDC_ISSUER_URL
+        value: "http://homelab:31601/realms/master"
+      - name: CODER_DISABLE_PASSWORD_AUTH
+        value: "true"
