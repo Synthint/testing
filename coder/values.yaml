@@ -7,7 +7,6 @@ coder:
   coder:
     envFrom:
       - secretRef:
-          name: coder-oidc
     env:
       - name: CODER_PG_CONNECTION_URL
         value: postgres://coder:password@coder-postgresql.coder.svc.cluster.local:5432/coder?sslmode=disable
