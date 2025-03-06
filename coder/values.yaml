@@ -10,14 +10,16 @@ coder:
       - name: CODER_ACCESS_URL
         value: "http://homelab:32669"
       - name: CODER_OIDC_SIGN_IN_TEXT
-        value: "Sign in with Keycloak"
+        value: Sign in with Keycloak
       - name: CODER_OIDC_CLIENT_ID
         value: coder
       - name: CODER_OIDC_ISSUER_URL
-        value: "http://homelab:31601/realms/master"
+        value: http://homelab:31601/realms/master
       - name: CODER_DISABLE_PASSWORD_AUTH
-        value: "true"
+        value: true
       - name: CODER_OIDC_CLIENT_SECRET
         value: "SEoGlGJs0Eba147H8qG491MrGoKxMo5l"
       - name: CODER_OIDC_EMAIL_DOMAIN
-        value: "homelab"
+        value: homelab
+      - name: CODER_OIDC_IGNORE_USERINFO
+        value: true 
