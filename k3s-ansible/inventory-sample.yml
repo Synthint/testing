@@ -19,7 +19,7 @@ k3s_cluster:
     k3s_version: "{{ host_vars['k3s_version'] }}"
     token: "{{ host_vars['token'] }}"
     api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
-
+    # labels: "{{ host_vars['labels'] }}" // not currently implemented
     # Optional vars
     static_hostnames: "{{ host_vars['static_hostnames'] }}"
 

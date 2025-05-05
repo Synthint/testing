@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gpio-controller
+  namespace: gpio-control
+spec:
+  project: default
+  source:
+    repoURL: 'git@github.com:Synthint/testing.git'
+    path: gpio-controller
+    targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: gpio-control
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
