@@ -9,11 +9,13 @@ spec:
   selector: 
     matchLabels:
       role: hardware-controller
+      app: gpio-page
   template:
     metadata:
       name: gpio-page-pod
       labels:
         role: hardware-controller
+        app: gpio-page
     spec:
       nodeSelector:
         extra-hardware: rpi-gpio
