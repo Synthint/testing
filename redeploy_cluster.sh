@@ -18,7 +18,7 @@ rm $CREDENTIALS_FILE
 
 op document get $TUNNEL_CREDENTIALS > $TUNNEL_CREDENTIALS_FILE
 
-kubectl create secret generic tunnel-credentials \
+kubectl create secret generic tunnel-credentials -n cloudflared \
 --from-file=credentials.json=$TUNNEL_CREDENTIALS_FILE
 
 rm $TUNNEL_CREDENTIALS_FILE
