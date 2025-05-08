@@ -16,13 +16,9 @@ spec:
         - name: keycloak
           image: quay.io/keycloak/keycloak:24.0.5
           args: ["start-dev"]
-          env:
-            - name: KEYCLOAK_ADMIN
-              value: "admin"
-            - name: KEYCLOAK_ADMIN_PASSWORD
-              value: "admin"
-            - name: KC_PROXY
-              value: "edge"
+          envFrom:
+            - configMapRef:
+                name: keycloak-config
           ports:
             - name: http
               containerPort: 8080
@@ -37,3 +33,10 @@ spec:
             httpGet:
               path: /realms/master
               port: 8080
+          volumeMounts:
+            - name: keycloak-data
+              mountPath: /opt/keycloak/data
+      volumes:
+        - name: keycloak-data
+          persistentVolumeClaim:
+            claimName: keycloak-pvc
