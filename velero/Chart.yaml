@@ -1,0 +1,12 @@
+apiVersion: v2
+appVersion: 1.16.0
+kubeVersion: ">=1.16.0-0"
+description: A Helm chart for velero
+name: velero
+version: 9.1.2
+sources:
+  - https://github.com/vmware-tanzu/velero
+dependencies:
+  - name: velero
+    version: 9.1.2
+    repository: https://vmware-tanzu.github.io/vmware-tanzu/velero 
