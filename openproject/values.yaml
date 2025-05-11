@@ -448,7 +448,7 @@ persistence:
   size: "1Gi"
 
   ## Define the class of PV.
-  storageClassName:
+  storageClassName: local-path 
 
 ## Whether to use an S3-compatible object storage to store OpenProject attachments.
 ## If this is enabled, files will NOT be stored in the mounted volume configured in `persistence` above.
