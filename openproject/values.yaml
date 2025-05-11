@@ -116,7 +116,7 @@ openproject:
   ingress:
     ## Whether to enable session affinity or not. It is required by ingress.
     #
-    enabled: true
+    enabled: false
 
     ## Define the name of the ingress class.
     ##
@@ -134,7 +134,7 @@ openproject:
 
     ## Define the Fully Qualified Domain Name (FQDN) where OpenProject should be reachable.
     #
-    host: "openproject.example.com"
+    host: ""
 
     ## Define the path for OpenProject on your host.
     #
@@ -159,7 +159,7 @@ openproject:
     tls:
       ## Whether to enable tls or not.
       #
-      enabled: true
+      enabled: false
 
       ## The name of the kubernetes secret which contains a TLS private key and certificate.
       ## Hint: This secret is not created by this chart and must be provided.
