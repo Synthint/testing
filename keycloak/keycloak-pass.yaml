@@ -1,0 +1,6 @@
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
+metadata:
+  name: keycloak-initial-config
+spec:
+  itemPath: "vaults/secrets/items/keycloak-initial-credentials"
