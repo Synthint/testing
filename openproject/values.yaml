@@ -10,7 +10,7 @@ openproject:
   ##
   ## This will set `OPENPROJECT_HTTPS` to `false` and avoid using volumes for
   ## tmp folders as (permissions for) these don't work correctly in local clusters.
-  develop: false
+  develop: true
 
   global:
     ## Credentials to fetch images from private registry.
