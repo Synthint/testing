@@ -6,4 +6,4 @@ version: 9.10.1
 dependencies:
   - name: velero
     version: 9.10.1
-    repository: https://charts.openproject.org/openproject
+    repository: https://charts.openproject.org/openproject/openproject
