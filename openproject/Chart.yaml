@@ -1,0 +1,9 @@
+apiVersion: v2
+appVersion: 15.5.0
+description: A Helm chart for openproject
+name: openproject
+version: 9.10.1
+dependencies:
+  - name: velero
+    version: 9.10.1
+    repository: https://charts.openproject.org/openproject
