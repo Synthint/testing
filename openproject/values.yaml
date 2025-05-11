@@ -274,7 +274,7 @@ cron:
   ## See documentation referenced above for all variables.
   environment:
     IMAP_HOST:
-    IMAP_USERNAME:
+    IMAP_USERNAME: 
     IMAP_PASSWORD:
     IMAP_PORT: 993
 
@@ -437,7 +437,7 @@ persistence:
   ##                       you want to ensure that only one pod across whole cluster can read that PVC or write to it.
   #
   accessModes:
-    - "ReadWriteMany"
+    - "ReadWriteOnce"
 
   ## Define custom storage (PVC) annotations:
   ##
@@ -787,7 +787,7 @@ service:
   ##
   ## Ref.: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
   #
-  type: "ClusterIP"
+  type: "LoadBalancer"
 
   ## Specify the external IP address for the LoadBalancer service. If your cloud provider supports
   ## specifying a static IP for the load balancer, you can set it here.
