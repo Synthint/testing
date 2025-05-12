@@ -345,8 +345,12 @@ openproject:
     # only applicable on first installation
     # c.f. https://www.openproject.org/docs/installation-and-operations/configuration/#initial-admin-user-creation
     admin_user:
-      password: "admin"
-      password_reset: "true"
+      password: 
+        valueFrom:
+          secretKeyRef:
+            name: openproject-user
+            key: password
+      password_reset: "false"
       name: "OpenProject Admin"
       mail: "admin@example.net"
 
