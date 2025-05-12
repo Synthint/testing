@@ -116,7 +116,7 @@ openproject:
   ingress:
     ## Whether to enable session affinity or not. It is required by ingress.
     #
-    enabled: false
+    enabled: true
 
     ## Define the name of the ingress class.
     ##
@@ -134,7 +134,7 @@ openproject:
 
     ## Define the Fully Qualified Domain Name (FQDN) where OpenProject should be reachable.
     #
-    host: ""
+    host: "project.scmeyer.dev"
 
     ## Define the path for OpenProject on your host.
     #
