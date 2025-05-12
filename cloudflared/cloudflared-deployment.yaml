@@ -85,4 +85,6 @@ data:
     ingress:
     - hostname: auth.scmeyer.dev
       service: http://keycloak.keycloak.svc.cluster.local:8080
+    - hostname: project.scmeyer.dev
+      service: http://openproject.openproject.svc.cluster.local:8080
     - service: http_status:404
