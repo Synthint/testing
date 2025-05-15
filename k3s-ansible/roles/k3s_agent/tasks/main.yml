@@ -47,7 +47,7 @@
       ansible.builtin.copy:
         content: "{{ agent_config_yaml }}"
         dest: "/etc/rancher/k3s/config.yaml"
-        mode: "0644"
+        mode: "0777"
       register: _agent_config_result
 
 - name: Get the token from the first server
@@ -59,6 +59,11 @@
     state: absent
     path: "{{ systemd_dir }}/k3s-agent.service.env"
     regexp: "^K3S_TOKEN=\\s*(?!{{ token }}\\s*$)"
+
+- name: ensure agent env file is present
+  ansible.builtin.file:
+    path: "{{ systemd_dir }}/k3s-agent.service.env"
+    state: touch
 
 - name: Add the token for joining the cluster to the environment
   ansible.builtin.lineinfile:
