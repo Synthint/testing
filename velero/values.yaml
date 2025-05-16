@@ -346,7 +346,7 @@ velero:
       accessMode: ReadWrite
       credential:
         # name of the secret used by this backupStorageLocation.
-        name: Backblaze-bucket-homelab-service
+        name: backblaze-bucket-homelab-service
         # name of key that contains the secret data to be used.
         key: applicationKey
       # Additional provider-specific configuration. See link above
@@ -380,7 +380,7 @@ velero:
       provider: aws
       credential:
         # name of the secret used by this volumeSnapshotLocation.
-        name: Backblaze-bucket-homelab-service
+        name: backblaze-bucket-homelab-service
         # name of key that contains the secret data to be used.
         key: applicationKey
       # Additional provider-specific configuration. See link above
