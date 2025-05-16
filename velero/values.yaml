@@ -348,7 +348,7 @@ velero:
         # name of the secret used by this backupStorageLocation.
         name: backblaze-bucket-homelab-service
         # name of key that contains the secret data to be used.
-        key: applicationKey
+        key: aws_secret_access_key
       # Additional provider-specific configuration. See link above
       # for details of required/optional fields for your provider.
       config:
@@ -385,8 +385,9 @@ velero:
         key: applicationKey
       # Additional provider-specific configuration. See link above
       # for details of required/optional fields for your provider.
-      config: {}
-    #    region:
+      config: 
+       region: us-east-005
+       s3Url: https://s3.us-east-005.backblazeb2.com
     #    apiTimeout:
     #    resourceGroup:
     #    The ID of the subscription where volume snapshots should be stored, if different from the cluster’s subscription. If specified, also requires `configuration.volumeSnapshotLocation.config.resourceGroup`to be set. (Azure only)
@@ -521,7 +522,7 @@ velero:
     name:
     # Name of a pre-existing secret (if any) in the Velero namespace
     # that should be used to get IAM account credentials. Optional.
-    existingSecret:
+    existingSecret: backblaze-bucket-homelab-service
     # Data to be stored in the Velero secret, if `useSecret` is true and `existingSecret` is empty.
     # As of the current Velero release, Velero only uses one secret key/value at a time.
     # The key must be named `cloud`, and the value corresponds to the entire content of your IAM credentials file.
