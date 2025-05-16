@@ -328,17 +328,17 @@ velero:
     backupStorageLocation:
       # name is the name of the backup storage location where backups should be stored. If a name is not provided,
       # a backup storage location will be created with the name "default". Optional.
-    - name:
+    - name: backblaze-bucket
       # provider is the name for the backup storage location provider.
-      provider:
+      provider: aws
       # bucket is the name of the bucket to store backups in. Required.
-      bucket:
+      bucket: homelab-service
       # caCert defines a base64 encoded CA bundle to use when verifying TLS connections to the provider. Optional.
       caCert:
       # prefix is the directory under which all Velero data should be stored within the bucket. Optional.
       prefix:
       # default indicates this location is the default backup storage location. Optional.
-      default:
+      default: true
       # validationFrequency defines how frequently Velero should validate the object storage. Optional.
       validationFrequency:
       # accessMode determines if velero can write to this backup storage location. Optional.
@@ -346,9 +346,9 @@ velero:
       accessMode: ReadWrite
       credential:
         # name of the secret used by this backupStorageLocation.
-        name:
+        name: Backblaze-bucket-homelab-service
         # name of key that contains the secret data to be used.
-        key:
+        key: applicationKey
       # Additional provider-specific configuration. See link above
       # for details of required/optional fields for your provider.
       config: {}
@@ -375,14 +375,14 @@ velero:
     # See https://velero.io/docs/v1.6/api-types/volumesnapshotlocation/
     volumeSnapshotLocation:
       # name is the name of the volume snapshot location where snapshots are being taken. Required.
-    - name:
+    - name: backblaze-bucket
       # provider is the name for the volume snapshot provider.
-      provider:
+      provider: aws
       credential:
         # name of the secret used by this volumeSnapshotLocation.
-        name:
+        name: Backblaze-bucket-homelab-service
         # name of key that contains the secret data to be used.
-        key:
+        key: applicationKey
       # Additional provider-specific configuration. See link above
       # for details of required/optional fields for your provider.
       config: {}
@@ -416,13 +416,13 @@ velero:
     # `velero server` default: 20.0
     clientQPS:
     # Name of the default backup storage location. Default: default
-    defaultBackupStorageLocation:
+    defaultBackupStorageLocation: backblaze-bucket
     # The default duration any single item operation can take before timing out, especially important for large volume schedules. Default 4h
     defaultItemOperationTimeout:
     # How long to wait by default before backups can be garbage collected. Default: 72h
     defaultBackupTTL:
     # Name of the default volume snapshot location.
-    defaultVolumeSnapshotLocations:
+    defaultVolumeSnapshotLocations: backblaze-bucket
     # `velero server` default: empty
     disableControllers:
     # `velero server` default: false
@@ -545,7 +545,7 @@ velero:
   # Whether to create backupstoragelocation crd, if false => do not create a default backup location
   backupsEnabled: true
   # Whether to create volumesnapshotlocation crd, if false => disable snapshot feature
-  snapshotsEnabled: true
+  snapshotsEnabled: false
 
   # Whether to deploy the node-agent daemonset.
   deployNodeAgent: false

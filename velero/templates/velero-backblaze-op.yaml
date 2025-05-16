@@ -1,0 +1,6 @@
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
+metadata:
+  name: Backblaze-bucket-homelab-service
+spec:
+  itemPath: "vaults/secrets/items/backblaze-bucket-homelab-service"
