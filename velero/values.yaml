@@ -348,7 +348,7 @@ velero:
         # name of the secret used by this backupStorageLocation.
         name: backblaze-bucket-homelab-service
         # name of key that contains the secret data to be used.
-        key: aws_secret_access_key
+        key: cloud
       # Additional provider-specific configuration. See link above
       # for details of required/optional fields for your provider.
       config:
@@ -382,7 +382,7 @@ velero:
         # name of the secret used by this volumeSnapshotLocation.
         name: backblaze-bucket-homelab-service
         # name of key that contains the secret data to be used.
-        key: aws_secret_access_key
+        key: cloud
       # Additional provider-specific configuration. See link above
       # for details of required/optional fields for your provider.
       config: 
