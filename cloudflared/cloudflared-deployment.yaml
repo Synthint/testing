@@ -87,4 +87,6 @@ data:
       service: http://keycloak.keycloak.svc.cluster.local:8080
     - hostname: project.scmeyer.dev
       service: http://openproject.openproject.svc.cluster.local:8080
+    - hostname: argo.scmeyer.dev
+      service: http://argocd.argo-server.svc.cluster.local:443
     - service: http_status:404
