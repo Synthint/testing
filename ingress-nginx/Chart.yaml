@@ -1,0 +1,9 @@
+apiVersion: v2
+appVersion: 14.12.2
+description: A Helm chart for ingress-nginx
+name: ingress-nginx
+version: 14.12.2
+dependencies:
+  - name: ingress-nginx
+    version: 14.12.2
+    repository: https://kubernetes.github.io/ingress-nginx
