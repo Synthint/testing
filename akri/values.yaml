@@ -1,0 +1,18 @@
+akri:
+  controller:
+    enabled: true
+    onlyOnControlPlane: false
+    allowOnControlPlane: true
+    resources:
+      memoryRequest: 11Mi
+      cpuRequest: 10m
+      memoryLimit: 100Mi
+      cpuLimit: 26m
+  agent:
+    enabled: true
+    full: true
+    resources:
+      memoryRequest: 11Mi
+      cpuRequest: 10m
+      memoryLimit: 79Mi
+      cpuLimit: 26m
