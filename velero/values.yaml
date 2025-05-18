@@ -184,17 +184,17 @@ velero:
     dnsPolicy: ClusterFirst
     
 
-schedules:
-  mybackup:
-    disabled: false
-    schedule: "CRON_TZ=America/New_York 0 3 * * *"
-    useOwnerReferencesInBackup: false
-    paused: false
-    skipImmediately: false
-    template:
-      ttl: "240h"
-      storageLocation: default
-      includedNamespaces:
-      - keycloak
-      - openproject
+  schedules:
+    mybackup:
+      disabled: false
+      schedule: "CRON_TZ=America/New_York 0 3 * * *"
+      useOwnerReferencesInBackup: false
+      paused: false
+      skipImmediately: false
+      template:
+        ttl: "240h"
+        storageLocation: default
+        includedNamespaces:
+        - keycloak
+        - openproject
 
