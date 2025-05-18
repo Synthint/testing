@@ -16,3 +16,16 @@ akri:
       cpuRequest: 10m
       memoryLimit: 79Mi
       cpuLimit: 26m
+  udev:
+    configuration:
+      enabled: true
+      name: akri-udev
+      discoveryDetails:
+        groupRecursive: false
+        udevRules:
+          - 'KERNEL=="video[0-9]*"'
+      brokerPod:
+        image:
+          repository: ghcr.io/project-akri/akri/udev-video-broker"
+          tag: latest
+          pullPolicy: "Always"
