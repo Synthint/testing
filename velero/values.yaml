@@ -185,7 +185,7 @@ velero:
     
 
   schedules:
-    mybackup:
+    daily-limited:
       disabled: false
       schedule: "CRON_TZ=America/New_York 0 3 * * *"
       useOwnerReferencesInBackup: false
