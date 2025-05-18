@@ -29,3 +29,5 @@ akri:
           repository: ghcr.io/project-akri/akri/udev-video-broker"
           tag: latest
           pullPolicy: "Always"
+      discovery:
+        enabled: true
