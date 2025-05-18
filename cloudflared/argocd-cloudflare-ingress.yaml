@@ -4,7 +4,6 @@ metadata:
   name: argocd-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
   rules:
   - host: argo.scmeyer.dev
