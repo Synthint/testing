@@ -31,3 +31,7 @@ akri:
           pullPolicy: "Always"
       discovery:
         enabled: true
+        image:
+          repository: ghcr.io/project-akri/akri/udev-discovery
+          tag:
+          pullPolicy: "Always"
