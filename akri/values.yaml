@@ -26,7 +26,7 @@ akri:
           - 'KERNEL=="video[0-9]*"'
       brokerPod:
         image:
-          repository: ghcr.io/project-akri/akri/udev-video-broker"
+          repository: ghcr.io/project-akri/akri/udev-video-broker
           tag: latest
           pullPolicy: "Always"
       discovery:
