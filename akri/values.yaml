@@ -1,4 +1,6 @@
 akri:
+  rbac:
+   enabled: false
   controller:
     enabled: true
     onlyOnControlPlane: false
