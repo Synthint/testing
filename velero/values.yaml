@@ -65,7 +65,7 @@ velero:
 
   metrics:
     enabled: true
-    scrapeInterval: 30s
+    scrapeInterval: 1m
     scrapeTimeout: 10s
 
     service:
@@ -134,11 +134,11 @@ velero:
       limits:
         cpu: 1000m
         memory: 1024Mi
-      latestJobsCount: 3
+      latestJobsCount: 1
     defaultVolumesToFsBackup: true
 
     # How often repository maintain is run for repositories by default.
-    defaultRepoMaintainFrequency: 1h
+    defaultRepoMaintainFrequency: 12h
 
   rbac:
     # Whether to create the Velero role and role binding to give all permissions to the namespace to Velero.
