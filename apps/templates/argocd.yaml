@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd-resources
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'git@github.com:Synthint/testing.git'
+    path: argocd
+    targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: argocd
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
