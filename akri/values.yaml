@@ -2,7 +2,7 @@ akri:
   controller:
     enabled: true
     onlyOnControlPlane: false
-    allowOnControlPlane: true
+    allowOnControlPlane: false
     resources:
       memoryRequest: 11Mi
       cpuRequest: 10m
