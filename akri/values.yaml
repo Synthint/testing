@@ -23,7 +23,7 @@ akri:
       discoveryDetails:
         groupRecursive: false
         udevRules:
-          - 'SUBSYSTEM==video4linux'
+          - 'KERNEL=="video[0-2]*"'
       brokerPod:
         image:
           repository: ghcr.io/project-akri/akri/udev-video-broker
