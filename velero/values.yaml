@@ -138,7 +138,7 @@ velero:
     defaultVolumesToFsBackup: true
 
     # How often repository maintain is run for repositories by default.
-    defaultRepoMaintainFrequency: 12h
+    defaultRepoMaintainFrequency: 16h
 
   rbac:
     # Whether to create the Velero role and role binding to give all permissions to the namespace to Velero.
