@@ -23,7 +23,7 @@ akri:
       discoveryDetails:
         groupRecursive: false
         udevRules:
-          - 'KERNEL=="video[0-2]*"'
+          - 'ENV{ID_V4L_CAPABILITIES}==":capture:"'
       brokerPod:
         image:
           repository: ghcr.io/project-akri/akri/udev-video-broker
