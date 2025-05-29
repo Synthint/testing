@@ -9,6 +9,7 @@ oauth2-proxy:
 
   ingress:
     enabled: true
+    ingressClassName: traefik
     hosts:
       - auth.scmeyer.dev
     annotations:
