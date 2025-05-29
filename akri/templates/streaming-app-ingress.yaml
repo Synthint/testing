@@ -5,7 +5,7 @@ metadata:
   namespace: akri
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web
-    traefik.ingress.kubernetes.io/router.middlewares: oauth2-proxy-keycloak-auth-middleware@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: oauth2-proxy/keycloak-auth-middleware@kubernetescrd
 spec:
   ingressClassName: traefik
   rules:
