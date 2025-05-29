@@ -1,4 +1,3 @@
-
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -6,10 +5,9 @@ metadata:
   namespace: akri
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web
-    # cert-manager.io/cluster-issuer: letsencrypt-prod
-    kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.middlewares: oauth2-proxy-keycloak-auth-middleware@kubernetescrd
 spec:
+  ingressClassName: traefik
   rules:
     - host: cam.scmeyer.dev
       http:
