@@ -65,7 +65,7 @@ velero:
 
   metrics:
     enabled: true
-    scrapeInterval: 1m
+    scrapeInterval: 5m
     scrapeTimeout: 10s
 
     service:
@@ -127,6 +127,8 @@ velero:
        region: us-east-005
        s3Url: https://s3.us-east-005.backblazeb2.com
 
+    features: EnableCSI
+
     repositoryMaintenanceJob:
       requests:
         cpu: 500m
@@ -135,6 +137,7 @@ velero:
         cpu: 1000m
         memory: 1024Mi
       latestJobsCount: 1
+      
     defaultVolumesToFsBackup: true
 
     # How often repository maintain is run for repositories by default.
@@ -187,7 +190,7 @@ velero:
   schedules:
     daily-limited:
       disabled: false
-      schedule: "CRON_TZ=America/New_York 0 3 * * *"
+      schedule: "CRON_TZ=America/New_York 0 3 */2 * *"
       useOwnerReferencesInBackup: false
       paused: false
       skipImmediately: false

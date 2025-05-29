@@ -1,0 +1,40 @@
+oauth2-proxy:
+  config:
+    # clientID: oauth2-proxy
+    # clientSecret: changeme
+    existingSecret: oauth2-proxy-keycloak-secret
+    configFile: |-
+      email_domains = [ "*" ]
+      upstreams = ["static://202"]
+
+  ingress:
+    enabled: true
+    hosts:
+      - auth.scmeyer.dev
+    annotations:
+      traefik.ingress.kubernetes.io/backend-protocol: 'HTTP' #"HTTPS"
+      kubernetes.io/ingress.class: traefik
+      # cert-manager.io/cluster-issuer: letsencrypt-prod
+    path: /oauth2
+    pathType: Prefix
+    # tls:
+    #   - hosts:
+    #       - auth.scmeyer.dev
+    #     secretName: oauth2-proxy-certs
+  extraArgs:
+    provider: keycloak-oidc
+    oidc-issuer-url: https://auth.scmeyer.dev/realms/master
+    provider-display-name: Keycloak
+    skip-provider-button: true
+    pass-authorization-header: true
+    code-challenge-method: S256
+    redirect-url: https://auth.scmeyer.dev/oauth2/callback
+    cookie-csrf-per-request: true
+    cookie-domain: .scmeyer.dev
+    whitelist-domain: .scmeyer.dev
+    silence-ping-logging: true
+    reverse-proxy: true
+    pass-user-headers: true
+    set-xauthrequest: true
+    set-authorization-header: true
+    allowed-group: WebAccess

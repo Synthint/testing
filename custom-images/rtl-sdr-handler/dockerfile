@@ -1,0 +1,35 @@
+FROM ubuntu:20.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Add PPAs
+RUN apt-get update && apt-get install -y software-properties-common && \
+    add-apt-repository -y ppa:pothosware/framework && \
+    add-apt-repository -y ppa:pothosware/support && \
+    add-apt-repository -y ppa:myriadrf/drivers && \
+    add-apt-repository -y ppa:ettusresearch/uhd && \
+    apt-get update
+
+# Install dependencies
+RUN apt-get install -y \
+    pothos-all \
+    python3-pothos \
+    pothos-python-dev \
+    soapysdr-tools \
+    python3-soapysdr \
+    python3-numpy \
+    soapysdr-module-remote soapyremote-server \
+    rtl-sdr soapysdr-module-rtlsdr \
+    avahi-daemon \
+    dbus
+    
+# 91.885
+
+# Expose SoapySDRServer port
+EXPOSE 55132
+
+# Entry point to run server and probe device
+#CMD bash -c "service dbus start && avahi-daemon -D && SoapySDRUtil --find="driver=rtlsdr" && SoapySDRServer --bind="0.0.0.0:55132" --args="driver=rtlsdr""
+CMD rtl_tcp
+
+

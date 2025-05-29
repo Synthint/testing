@@ -1,0 +1,22 @@
+
+kind: Ingress
+metadata:
+  name: akri-video-streaming-ingress
+  namespace: akri
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    # cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.middlewares: oauth2-proxy-keycloak-auth-middleware@kubernetescrd
+spec:
+  rules:
+    - host: cam.scmeyer.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: akri-video-streaming-app
+                port:
+                  number: 80

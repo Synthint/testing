@@ -1,0 +1,95 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: akri-video-streaming-app
+  namespace: akri
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: akri-video-streaming-app
+  template:
+    metadata:
+      labels:
+        app: akri-video-streaming-app
+    spec:
+      serviceAccountName: akri-video-streaming-app-sa
+      
+      volumes:
+        - name: index-html
+          configMap:
+            name: custom-index-html
+      containers:
+      - name: akri-video-streaming-app
+        image: ghcr.io/project-akri/akri/video-streaming-app:latest-dev
+        imagePullPolicy: Always
+        securityContext:
+          runAsUser: 1000
+          allowPrivilegeEscalation: true
+          runAsNonRoot: true
+          readOnlyRootFilesystem: true
+        volumeMounts:
+          - name: index-html
+            mountPath: /app/templates/index.html
+            subPath: index.html
+        env:
+        # Streamer works in two modes; either specify the following commented
+        # block of env vars to explicitly target cameras (update the <id>s for
+        # your specific cameras) or 
+        # specify a Akri configuration name to pick up cameras automatically
+        # - name: CAMERAS_SOURCE_SVC
+        #   value: "akri-udev-video-svc"
+        - name: CAMERA_COUNT
+          value: "2"
+        # - name: CAMERA1_SOURCE_SVC
+        #   value: "akri-udev-video-<id>-svc"
+        # - name: CAMERA2_SOURCE_SVC
+        #   value: "akri-udev-video-<id>-svc"
+        - name: CONFIGURATION_NAME
+          value: akri-udev
+        
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: akri-video-streaming-app
+  namespace: akri
+  labels:
+    app: akri-video-streaming-app
+spec:
+  selector:
+    app: akri-video-streaming-app
+  ports:
+  - name: http
+    port: 80
+    targetPort: 5000
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: akri-video-streaming-app-sa
+  namespace: akri
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: akri-video-streaming-app-role
+rules:
+- apiGroups: [""]
+  resources: ["services"]
+  verbs: ["list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: akri-video-streaming-app-binding
+roleRef:
+  apiGroup: ""
+  kind: ClusterRole
+  name: akri-video-streaming-app-role
+subjects:
+  - kind: ServiceAccount
+    name: akri-video-streaming-app-sa
+    namespace: akri
