@@ -38,6 +38,4 @@ oauth2-proxy:
     pass-user-headers: true
     set-xauthrequest: true
     set-authorization-header: true
-    allowed-group: WebAccess
-    logging: debug
-    stderrthreshold: 0
+    # allowed-group: WebAccess
