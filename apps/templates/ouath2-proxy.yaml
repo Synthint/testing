@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: oauth2-proxy
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'git@github.com:Synthint/testing.git'
+    path: oauth2-proxy
+    targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: oauth2-proxy
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
