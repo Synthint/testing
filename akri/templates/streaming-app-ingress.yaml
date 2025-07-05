@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-    - host: cam.scmeyer.dev
+    - host: cats.scmeyer.dev
       http:
         paths:
           - path: /
