@@ -19,5 +19,3 @@ spec:
                 name: akri-video-streaming-app
                 port:
                   number: 80
-app.kubernetes.io/instance: traefik-kube-system
-    app.kubernetes.io/name: traefik
