@@ -11,7 +11,7 @@ oauth2-proxy:
     enabled: true
     ingressClassName: traefik
     hosts:
-      - auth.scmeyer.dev
+      - auth2.scmeyer.dev
     annotations:
       traefik.ingress.kubernetes.io/backend-protocol: 'HTTP' #"HTTPS"
       kubernetes.io/ingress.class: traefik
@@ -34,7 +34,7 @@ oauth2-proxy:
     skip-provider-button: true
     pass-authorization-header: true
     code-challenge-method: S256
-    redirect-url: https://auth.scmeyer.dev/oauth2/callback
+    redirect-url: https://auth2.scmeyer.dev/oauth2/callback
     cookie-csrf-per-request: true
     cookie-domain: .scmeyer.dev
     whitelist-domain: .scmeyer.dev
@@ -44,3 +44,4 @@ oauth2-proxy:
     set-xauthrequest: true
     set-authorization-header: true
     # allowed-group: WebAccess
+
