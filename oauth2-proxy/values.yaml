@@ -38,5 +38,5 @@ oauth2-proxy:
     pass-user-headers: true
     set-xauthrequest: true
     set-authorization-header: true
-    trustForwardHeader:true
+    trustForwardHeader: true
     # allowed-group: WebAccess
