@@ -5,6 +5,7 @@ metadata:
   namespace: akri
   annotations:
     traefik.ingress.kubernetes.io/router.middlewares: akri-keycloak-auth-middleware@kubernetescrd
+    kubernetes.io/ingress.class: "traefik"
 spec:
   ingressClassName: traefik
   rules:
@@ -18,3 +19,5 @@ spec:
                 name: akri-video-streaming-app
                 port:
                   number: 80
+app.kubernetes.io/instance: traefik-kube-system
+    app.kubernetes.io/name: traefik
