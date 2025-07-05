@@ -18,6 +18,11 @@ oauth2-proxy:
       # cert-manager.io/cluster-issuer: letsencrypt-prod
     path: /oauth2
     pathType: Prefix
+    backend:
+      service:
+        name: oauth2-proxy
+        port:
+          number: 80
     # tls:
     #   - hosts:
     #       - auth.scmeyer.dev
