@@ -43,7 +43,8 @@ oauth2-proxy:
     pass-user-headers: true
     set-xauthrequest: true
     set-authorization-header: true
-    oidc-email-claim: ""
+    user-id-claim: preferred_username
+    oidc-email-claim: preferred_username
 
     # allowed-group: WebAccess
 
