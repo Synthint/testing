@@ -1,9 +1,11 @@
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
   name: akri-video-streaming-ingress
   namespace: akri
   annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web, websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
     traefik.ingress.kubernetes.io/router.middlewares: akri-keycloak-auth-middleware@kubernetescrd
     kubernetes.io/ingress.class: "traefik"
 spec:
