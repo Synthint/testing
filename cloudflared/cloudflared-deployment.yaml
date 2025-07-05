@@ -84,7 +84,7 @@ data:
     no-autoupdate: true
     ingress:
     - hostname: auth.scmeyer.dev
-      service: http://traefik.kube-system.svc.cluster.local:80
+      service: http://keycloak.keycloak.svc.cluster.local:8080
     - hostname: auth2.scmeyer.dev
       service: http://traefik.kube-system.svc.cluster.local:80
     - hostname: project.scmeyer.dev
