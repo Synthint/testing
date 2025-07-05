@@ -6,7 +6,7 @@ metadata:
   annotations:
     # traefik.ingress.kubernetes.io/router.entrypoints: web, websecure
     # traefik.ingress.kubernetes.io/router.tls: "true"
-    # traefik.ingress.kubernetes.io/router.middlewares: akri-keycloak-auth-middleware@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: akri-keycloak-auth-middleware
     kubernetes.io/ingress.class: "traefik"
 spec:
   ingressClassName: traefik
