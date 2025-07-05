@@ -45,7 +45,6 @@ oauth2-proxy:
     set-authorization-header: true
     user-id-claim: preferred_username
     oidc-email-claim: preferred_username
-    extraArgs:
     cookie-domain: .scmeyer.dev
     cookie-samesite: none
     cookie-secure: true
