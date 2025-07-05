@@ -5,7 +5,7 @@ metadata:
   namespace: oauth2-proxy
 spec:
   forwardAuth:
-    address: http://oauth2-proxy.oauth2-proxy.svc.cluster.local
+    address: https://auth2.scmeyer.dev/oauth2/auth
     trustForwardHeader: true
     authRequestHeaders:
       - X-Forwarded-Uri

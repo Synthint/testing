@@ -8,6 +8,7 @@ metadata:
     # traefik.ingress.kubernetes.io/router.tls: "true"
     traefik.ingress.kubernetes.io/router.middlewares: oauth2-proxy-keycloak-auth-middleware@kubernetescrd
     kubernetes.io/ingress.class: "traefik"
+    traefik.ingress.kubernetes.io/forwarded-headers-strategy: "forwarded"
 spec:
   ingressClassName: traefik
   rules:
