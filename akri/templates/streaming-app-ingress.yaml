@@ -3,12 +3,17 @@ kind: Ingress
 metadata:
   name: akri-video-streaming-ingress
   namespace: akri
+  metadata:
   annotations:
-    # traefik.ingress.kubernetes.io/router.entrypoints: web, websecure
-    # traefik.ingress.kubernetes.io/router.tls: "true"
     traefik.ingress.kubernetes.io/router.middlewares: oauth2-proxy-keycloak-auth-middleware@kubernetescrd
-    kubernetes.io/ingress.class: "traefik"
     traefik.ingress.kubernetes.io/forwarded-headers-strategy: "forwarded"
+    traefik.ingress.kubernetes.io/auth-response-headers: |
+      X-Auth-Request-User,
+      X-Auth-Request-Email,
+      X-Auth-Request-Preferred-Username,
+      Authorization,
+      Set-Cookie
+
 spec:
   ingressClassName: traefik
   rules:

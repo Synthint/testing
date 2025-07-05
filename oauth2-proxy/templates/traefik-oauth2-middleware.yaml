@@ -11,6 +11,11 @@ spec:
       - X-Forwarded-Uri
       - X-Forwarded-Method
       - X-Forwarded-Host
+      - Authorization
+      - Cookie
     authResponseHeaders:
       - X-Auth-Request-User
+      - X-Auth-Request-Email
+      - X-Auth-Request-Preferred-Username
+      - Authorization
       - Set-Cookie
