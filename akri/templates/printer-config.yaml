@@ -1,0 +1,62 @@
+apiVersion: akri.sh/v0
+kind: Configuration
+metadata:
+  name: akri-printer
+spec:
+  brokerProperties:
+    PRINTER_DRIVER: drv:///brlaser.drv/brl2300d.ppd
+    VERBOSITY: "1"
+    ADD_PRINTER: "1"
+    DEBUG_DRIVER_FILTER: "brother"
+  brokerSpec:
+    brokerPodSpec:
+      containers:
+      - image: cerosyn/printer-controller:0.0.1
+        imagePullPolicy: Always
+        name: akri-printer-broker
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - mountPath: /dev
+          name: dev
+        envFrom:
+        - configMapRef:
+            name: printer-broker-config
+      volumes:
+      - hostPath:
+          path: /dev
+          type: Directory
+        name: dev
+  capacity: 1
+  configurationServiceSpec:
+    ports:
+    - name: http
+      port: 8000
+      protocol: TCP
+      targetPort: 8000
+    type: LoadBalancer
+  discoveryHandler:
+    discoveryDetails: |
+      groupRecursive: false
+      udevRules:
+      - 'SUBSYSTEM=="usb", ATTR{idVendor}=="04f9", ATTR{idProduct}=="009e"'
+    name: udev
+  instanceServiceSpec:
+    ports:
+    - name: http
+      port: 8000
+      protocol: TCP
+      targetPort: 8000
+    type: LoadBalancer
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: printer-broker-config
+data:
+  PRINTER_DRIVER: drv:///brlaser.drv/brl2300d.ppd
+  VERBOSITY: "1"
+  ADD_PRINTER: "1"
+  DEBUG_DRIVER_FILTER: "brother"
