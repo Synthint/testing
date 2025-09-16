@@ -158,7 +158,6 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: gpio-agent
-  namespace: default
 
 ---
 
@@ -166,7 +165,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: gpio-job-creator
-  namespace: default
 rules:
   - apiGroups: ["batch"]
     resources: ["jobs"]
@@ -178,11 +176,9 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: gpio-job-creator-binding
-  namespace: default
 subjects:
   - kind: ServiceAccount
     name: gpio-agent
-    namespace: default
 roleRef:
   kind: Role
   name: gpio-job-creator
