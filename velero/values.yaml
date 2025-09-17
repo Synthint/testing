@@ -185,19 +185,5 @@ velero:
 
     useScratchEmptyDir: true
     dnsPolicy: ClusterFirst
-    
-
-  schedules:
-    daily-limited:
-      disabled: false
-      schedule: "CRON_TZ=America/New_York 0 3 */2 * *"
-      useOwnerReferencesInBackup: false
-      paused: false
-      skipImmediately: false
-      template:
-        ttl: "240h"
-        storageLocation: default
-        includedNamespaces:
-        - keycloak
-        - openproject
+  
 
