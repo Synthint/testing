@@ -21,7 +21,7 @@ spec:
       nodeSelector:
         extra-hardware: rpi-gpio
       containers:
-      - image: cerosyn/gpio-agent:0.0.15
+      - image: cerosyn/gpio-agent:0.0.16
         env:
           - name: PYTHONUNBUFFERED
             value: "1"
