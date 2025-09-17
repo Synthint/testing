@@ -11,7 +11,7 @@ spec:
   brokerSpec:
     brokerPodSpec:
       containers:
-      - image: cerosyn/printer-controller:0.0.1
+      - image: cerosyn/printer-controller:0.0.2
         imagePullPolicy: Always
         name: akri-printer-broker
         securityContext:
@@ -26,7 +26,13 @@ spec:
       - hostPath:
           path: /dev
           type: Directory
-        name: dev
+        name: dev  
+      livenessProbe:
+        initialDelaySeconds: 5
+        periodSeconds: 5
+        httpGet: 
+          path: /health
+          port: 8000
   capacity: 1
   configurationServiceSpec:
     ports:
