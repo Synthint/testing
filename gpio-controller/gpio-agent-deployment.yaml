@@ -63,6 +63,7 @@ data:
         "namespace": "gpio-controller"
       },
       "spec": {
+        "ttlSecondsAfterFinished": 3600,
         "template": {
           "spec": {
             "containers": [
