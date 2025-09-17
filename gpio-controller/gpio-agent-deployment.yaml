@@ -154,6 +154,16 @@ data:
 
 ---
 
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
+metadata:
+  name: parking-pass-credentials-and-config
+spec:
+  itemPath: "vaults/secrets/items/parking-pass-credentials-and-config"
+
+
+---
+
 apiVersion: v1
 kind: ServiceAccount
 metadata:
