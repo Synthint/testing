@@ -22,17 +22,17 @@ spec:
         envFrom:
         - configMapRef:
             name: printer-broker-config
+        livenessProbe:
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          httpGet: 
+            path: /health
+            port: 8000
       volumes:
       - hostPath:
           path: /dev
           type: Directory
         name: dev  
-      livenessProbe:
-        initialDelaySeconds: 5
-        periodSeconds: 5
-        httpGet: 
-          path: /health
-          port: 8000
   capacity: 1
   configurationServiceSpec:
     ports:
