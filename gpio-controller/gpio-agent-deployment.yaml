@@ -60,7 +60,7 @@ data:
       "kind": "Job",
       "metadata": {
         "name": "pass-creator-job",
-        "namespace": "default"
+        "namespace": "gpio-controller"
       },
       "spec": {
         "template": {
