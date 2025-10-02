@@ -4,4 +4,4 @@ metadata:
   name: metallb-pool
 spec:
   addresses:
-  - 192.168.87.2-192.168.87.39
+  - 10.0.1.1-10.0.1.50

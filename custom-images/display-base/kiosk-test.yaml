@@ -1,0 +1,64 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kiosk-browser
+spec:
+  nodeSelector:
+    display: "true"
+  containers:
+    - name: chromium
+      image: jess/chromium
+      env:
+        - name: DISPLAY
+          value: ":0"
+      securityContext:
+        privileged: true
+      volumeMounts:
+        - name: x11-socket
+          mountPath: /tmp/.X11-unix
+        - name: dri
+          mountPath: /dev/dri
+        - name: html
+          mountPath: /site
+      command: [
+        "chromium",
+        "--kiosk",
+        "--start-fullscreen",
+        "--window-size=1920,1080",
+        "--window-position=0,0",
+        "--no-sandbox",
+        "--disable-gpu",
+        "--disable-software-rasterizer",
+        "file:///site/test.html"
+      ]
+      resources:
+        limits:
+          memory: "1024Mi"
+          cpu: "1000m"
+        requests:
+          memory: "512Mi"
+          cpu: "500m"
+  volumes:
+    - name: x11-socket
+      hostPath:
+        path: /tmp/.X11-unix
+    - name: dri
+      hostPath:
+        path: /dev/dri
+    - name: html
+      configMap:
+        name: kiosk-web
+
+---
+
+apiVersion: v1
+data:
+  test.html: |-
+    <h1>Test webpage</h1>
+    <br>
+    <h1>Fill with something useful later</h1>
+    
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: kiosk-web
