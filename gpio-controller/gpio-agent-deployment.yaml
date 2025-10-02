@@ -140,7 +140,7 @@ data:
                   },
                   {
                     "name": "PRINT_SERVER_URL",
-                    "value": "http://akri-printer-svc .akri.svc.cluster.local:8000/print"
+                    "value": "http://akri-printer-svc.akri.svc.cluster.local:8000/print"
                   }
                 ]
               }
